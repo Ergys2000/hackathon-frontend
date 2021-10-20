@@ -13,11 +13,9 @@ function NavBar(props: any) {
 
 function NavBarItem(props: any) {
 	return (
-		<div className="has-tooltip group h-20 w-20 flex flex-col justify-center rounded-full 
-			items-center text-gray-800 hover:bg-indigo-800 hover:text-gray-200 duration-200">
+		<div className="flex flex-col items-center justify-center w-20 h-20 text-gray-800 duration-200 rounded-full cursor-pointer has-tooltip group hover:bg-indigo-800 hover:text-gray-200 text-select-none">
 			<i className="material-icons">home</i>		
-			<span className="absolute tooltip text-gray-200 flex flex-col justify-center items-center
-				rounded-full w-20 h-12 left-24 bg-indigo-800 duration-200">Tooltip</span>
+			<span className="absolute flex flex-col items-center justify-center w-20 h-12 text-gray-200 duration-200 bg-indigo-800 rounded-full tooltip left-24">Tooltip</span>
 		</div>
 	);
 }
