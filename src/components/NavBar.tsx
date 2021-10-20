@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import { useState } from 'react';
+import { useHistory} from 'react-router-dom';
 /** Navigation container, it can be extended with additional styles
 * @function NavBar
 * @returns A styled vertical navigation bar
@@ -6,18 +7,28 @@ import {useState} from 'react';
 function NavBar(props: any) {
 	return (
 		<nav {...props} className={`transition flex flex-col items-center justify-center 
-			bg-white h-full w-24 ${props.className}`}>
+			bg-gray-900 h-full w-24 ${props.className}`}>
 		</nav>
 	);
 }
 
-function NavBarItem(props: any) {
+
+type NavBarItemProps = {
+	url: string;
+	iconName: string;
+	tooltip: string;
+};
+/** Navigation bar item
+* @param link -- where it points to 
+* @param icon -- the icon name for the google icons library
+* @returns A navigation entry
+* */
+function NavBarItem(props: NavBarItemProps) {
+	const history = useHistory();
 	return (
-		<div className="has-tooltip group h-20 w-20 flex flex-col justify-center rounded-full 
-			items-center text-gray-800 hover:bg-indigo-800 hover:text-gray-200 duration-200">
-			<i className="material-icons">home</i>		
-			<span className="absolute tooltip text-gray-200 flex flex-col justify-center items-center
-				rounded-full w-20 h-12 left-24 bg-indigo-800 duration-200">Tooltip</span>
+		<div className="sidebar-icon" onClick={() => history.push(props.url)}>
+			<i className="material-icons">{props.iconName}</i>
+			<span className="sidebar-tooltip text-lg">{props.tooltip}</span>
 		</div>
 	);
 }

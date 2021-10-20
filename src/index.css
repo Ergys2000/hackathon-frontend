@@ -9,32 +9,60 @@
 	}
 }
 
+@layer components {
+	/* Button styling */
+	.action-button {
+		@apply bg-indigo-700 hover:bg-indigo-800 text-white rounded-lg;
+	}
 
-/* Custom classes for common components */
-.action-button {
-	@apply bg-indigo-500 hover:bg-indigo-700 text-white rounded-lg;
+	/* Input field classes */
+	.input-container {
+		@apply relative p-0;
+	}
+	.input-container label {
+		@apply transition-all duration-100 absolute mx-4 mt-6 text-gray-500;
+	}
+
+	.input-container.active label {
+		transform: translate(0, 4px) scale(.60);
+		@apply my-0 mx-2 text-indigo-700;
+	}
+
+	.input {
+		@apply bg-gray-200 w-full pt-8 pb-2 px-4 border-gray-700 border-b rounded-t focus:outline-none focus:border-indigo-700;
+	}
+
+	/* Select field classes */
+	.select {
+		@apply w-full p-1.5 border-gray-200 border rounded focus:outline-none focus:ring focus:border-blue-200;
+	}
+
+	/* textarea field classes */
+	.textarea {
+		@apply w-full p-1.5 border-gray-200 border rounded focus:outline-none focus:ring focus:border-blue-200;
+	}
+
+	/* classes used for creating the sidebar */
+	.sidebar-icon {
+        @apply relative flex items-center justify-center 
+               h-12 w-12 mt-2 mb-2 mx-auto shadow-lg
+               bg-gray-800 text-indigo-500
+               hover:bg-indigo-600 hover:text-white
+               rounded-3xl hover:rounded-xl
+               transition-all duration-300 ease-linear
+               cursor-pointer;
+    }
+	.sidebar-tooltip {
+        @apply absolute w-auto p-2 m-2 min-w-max left-16
+        rounded-md shadow-md
+        text-white bg-gray-900 
+        text-xs font-bold
+        transition-all duration-100 origin-left;
+		transform: scale(0);
+    }
+	.sidebar-icon:hover .sidebar-tooltip {
+		transform: scale(1);
+	}
 }
 
-.input {
-	@apply w-full p-1.5 border-gray-200 border rounded focus:outline-none focus:ring focus:border-blue-200;
-}
 
-.select {
-	@apply w-full p-1.5 border-gray-200 border rounded focus:outline-none focus:ring focus:border-blue-200;
-}
-
-.textarea {
-	@apply w-full p-1.5 border-gray-200 border rounded focus:outline-none focus:ring focus:border-blue-200;
-}
-
-.divider {
-	@apply w-full h-px bg-gray-800;
-}
-
-.tooltip {
-  @apply invisible absolute;
-}
-
-.has-tooltip:hover .tooltip {
-  @apply visible z-50
-}
