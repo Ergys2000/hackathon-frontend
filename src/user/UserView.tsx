@@ -1,6 +1,6 @@
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import { NavBar, NavBarItem } from '../components/NavBar';
-import { ToolTip } from '../components/Tooltip';
+import ToolTip from '../components/Tooltip';
 import Input from '../components/Input';
 export default function UserView(props: any) {
 	const { path, url } = useRouteMatch();
