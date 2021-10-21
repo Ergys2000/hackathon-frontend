@@ -1,7 +1,11 @@
-import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, Link, useRouteMatch, Redirect } from 'react-router-dom';
 import { NavBar, NavBarItem } from '../components/NavBar';
 import ToolTip from '../components/Tooltip';
 import Input from '../components/Input';
+import Select from '../components/Select';
+import Textarea from '../components/Textarea';
+import TableViewExample from './TableViewExample';
+
 export default function UserView(props: any) {
 	const { path, url } = useRouteMatch();
 	return (
@@ -10,6 +14,7 @@ export default function UserView(props: any) {
 				<NavBarItem url={`${url}/buttons`} iconName="home" tooltip="Buttons" />
 				<NavBarItem url={`${url}/forms`} iconName="list" tooltip="Forms" />
 				<NavBarItem url={`${url}/tooltip`} iconName="brush" tooltip="Tooltip" />
+				<NavBarItem url={`${url}/table`} iconName="table_rows" tooltip="Table" />
 			</NavBar>
 			<div className="overflow-auto h-full w-full">
 				<Switch>
@@ -20,13 +25,9 @@ export default function UserView(props: any) {
 					<Route path={`${path}/forms`}>
 						<h1>Form inputs</h1>
 						<form className="w-1/2 border p-5">
-							<Input />
-							<select className="select my-5">
-								<option>option 1</option>
-								<option>option 2</option>
-								<option>option 3</option>
-							</select>
-							<textarea className="textarea"></textarea>
+							<Input label="Label" />
+							<Select label="Label" />
+							<Textarea label="Textarea"></Textarea>
 						</form>
 					</Route>
 					<Route path={`${path}/tooltip`}>
@@ -35,6 +36,13 @@ export default function UserView(props: any) {
 							<ToolTip iconColor="gray-400" popupColor="white" textColor="black" popupText="Lorem Ipsum Dolor Sit Amet"></ToolTip>
 						</div>
 					</Route>
+					<Route path={`${path}/table`}>
+						<div className="">
+							<h1>Table</h1>
+							<TableViewExample />
+						</div>
+					</Route>
+					<Redirect path={`${path}/`} to={`${path}/buttons`} />
 				</Switch>
 			</div>
 		</div>

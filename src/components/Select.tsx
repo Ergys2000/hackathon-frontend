@@ -1,8 +1,8 @@
 import {useState} from 'react';
-interface InputProps {
+interface SelectProps {
 	label: string;
 };
-function Input<T extends InputProps>(props: T) {
+function Select<T extends SelectProps>(props: T) {
 	const [active, setActive] = useState(false);
 	const onBlur = (event: any) => {
 		event.preventDefault();
@@ -11,10 +11,11 @@ function Input<T extends InputProps>(props: T) {
 	return (
 		<div className={`form-field-container ${active ? "active" : ""}`}>
 			<label>{props.label}</label>
-			<input onBlur={onBlur} onFocus={() => setActive(true)} className="input" {...props}>
-			</input>
+			<select onBlur={onBlur} onFocus={() => setActive(true)} className="select" {...props}>
+				<option></option>
+			</select>
 		</div>
 	);
 }
 
-export default Input;
+export default Select;

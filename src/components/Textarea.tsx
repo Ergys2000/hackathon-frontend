@@ -1,8 +1,8 @@
 import {useState} from 'react';
-interface InputProps {
+interface TextareaProps {
 	label: string;
 };
-function Input<T extends InputProps>(props: T) {
+function Textarea<T extends TextareaProps>(props: T) {
 	const [active, setActive] = useState(false);
 	const onBlur = (event: any) => {
 		event.preventDefault();
@@ -11,10 +11,10 @@ function Input<T extends InputProps>(props: T) {
 	return (
 		<div className={`form-field-container ${active ? "active" : ""}`}>
 			<label>{props.label}</label>
-			<input onBlur={onBlur} onFocus={() => setActive(true)} className="input" {...props}>
-			</input>
+			<textarea onBlur={onBlur} onFocus={() => setActive(true)} className="textarea" {...props}>
+			</textarea>
 		</div>
 	);
 }
 
-export default Input;
+export default Textarea;
