@@ -5,6 +5,7 @@ import Input from '../components/Input';
 import Select from '../components/Select';
 import Textarea from '../components/Textarea';
 import TableViewExample from './TableViewExample';
+import SearchField from '../components/SearchField';
 
 export default function UserView(props: any) {
 	const { path, url } = useRouteMatch();
@@ -15,6 +16,7 @@ export default function UserView(props: any) {
 				<NavBarItem url={`${url}/forms`} iconName="list" tooltip="Forms" />
 				<NavBarItem url={`${url}/tooltip`} iconName="brush" tooltip="Tooltip" />
 				<NavBarItem url={`${url}/table`} iconName="table_rows" tooltip="Table" />
+				<NavBarItem url={`${url}/search`} iconName="search" tooltip="Search Field" />
 			</NavBar>
 			<div className="overflow-auto h-full w-full">
 				<Switch>
@@ -40,6 +42,12 @@ export default function UserView(props: any) {
 						<div className="">
 							<h1>Table</h1>
 							<TableViewExample />
+						</div>
+					</Route>
+					<Route path={`${path}/search`}>
+						<div className="p-10">
+							<h1>Search</h1>
+							<SearchField />
 						</div>
 					</Route>
 					<Redirect path={`${path}/`} to={`${path}/buttons`} />
