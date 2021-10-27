@@ -1,24 +1,17 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import { Switch, Route, Link, useRouteMatch, Redirect } from 'react-router-dom';
 import { NavBar, NavBarItem } from '../components/NavBar';
 import ToolTip from '../components/Tooltip';
-import Input from '../components/Input';
-import Select from '../components/Select';
-import Textarea from '../components/Textarea';
+import FormsExample from '../examples/FormsExample';
 import TableViewExample from './TableViewExample';
 import SearchField from '../components/SearchField';
 import AlertsExample from './AlertsExample';
 import PopupExample from './PopupExample';
 import ChartsExample from './ChartsExample';
+import ContentContainer from '../components/ContentContainer';
 
 export default function UserView(props: any) {
 	const { path, url } = useRouteMatch();
-
-	useEffect(() => {
-		const pathname = window.location.pathname;
-		const crumbs = pathname.split("/");
-		console.log(crumbs);
-	});
 
 	return (
 		<div className="flex h-screen w-screen">
@@ -32,50 +25,40 @@ export default function UserView(props: any) {
 				<NavBarItem url={`${url}/popup`} iconName="edit" tooltip="Popup window" />
 				<NavBarItem url={`${url}/charts`} iconName="show_chart" tooltip="Charts" />
 			</NavBar>
-			<div className="overflow-auto h-full w-full">
-				<Switch>
-					<Route path={`${path}/buttons`}>
-						<div></div>
-						<button className="action-button p-3 m-3">Button</button>
-					</Route>
-					<Route path={`${path}/forms`}>
-						<h1>Form inputs</h1>
-						<form className="w-1/2 border p-5">
-							<Input onChange={(event: React.ChangeEvent) => console.log(event)} label="Label" />
-							<Select label="Label" />
-							<Textarea label="Textarea"></Textarea>
-						</form>
-					</Route>
-					<Route path={`${path}/tooltip`}>
-						<div className="flex items-center space-x-4">
-							<h1>Tooltip</h1>
-							<ToolTip iconColor="gray-400" popupColor="gray-100" textColor="black" popupText="Lorem Ipsum Dolor Sit Amet"></ToolTip>
-						</div>
-					</Route>
-					<Route path={`${path}/table`}>
-						<div className="">
-							<h1>Table</h1>
+			<ContentContainer>
+				<div className="overflow-auto h-full w-full">
+					<Switch>
+						<Route path={`${path}/buttons`}>
+							<button className="action-button p-3 m-3">Button</button>
+						</Route>
+						<Route path={`${path}/forms`}>
+							<FormsExample />
+						</Route>
+						<Route path={`${path}/tooltip`}>
+							<div className="flex items-center space-x-4">
+								<h1>Tooltip</h1>
+								<ToolTip iconColor="gray-400" popupColor="gray-100" textColor="black" popupText="Lorem Ipsum Dolor Sit Amet"></ToolTip>
+							</div>
+						</Route>
+						<Route path={`${path}/table`}>
 							<TableViewExample />
-						</div>
-					</Route>
-					<Route path={`${path}/search`}>
-						<div className="p-10">
-							<h1>Search</h1>
+						</Route>
+						<Route path={`${path}/search`}>
 							<SearchField />
-						</div>
-					</Route>
-					<Route path={`${path}/alerts`}>
-						<AlertsExample />
-					</Route>
-					<Route path={`${path}/popup`}>
-						<PopupExample />
-					</Route>
-					<Route path={`${path}/charts`}>
-						<ChartsExample />
-					</Route>
-					<Redirect path={`${path}/`} to={`${path}/buttons`} />
-				</Switch>
-			</div>
+						</Route>
+						<Route path={`${path}/alerts`}>
+							<AlertsExample />
+						</Route>
+						<Route path={`${path}/popup`}>
+							<PopupExample />
+						</Route>
+						<Route path={`${path}/charts`}>
+							<ChartsExample />
+						</Route>
+						<Redirect path={`${path}/`} to={`${path}/buttons`} />
+					</Switch>
+				</div>
+			</ContentContainer>
 		</div>
 	);
 }

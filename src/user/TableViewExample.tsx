@@ -1,3 +1,6 @@
+import { useEffect, useContext } from 'react';
+import { useRouteMatch } from 'react-router-dom';
+import { ContentContainerContext } from '../components/ContentContainer';
 import Table from '../components/Table';
 
 type User = {
@@ -41,6 +44,11 @@ const data: User[] = [
 ];
 
 export default function TableViewExample(props: any) {
+	const pageContext = useContext(ContentContainerContext);
+	const { url } = useRouteMatch();
+	useEffect(() => {
+		pageContext.setLocationList([{ title: "Tables", url: url }]);
+	});
 	const cols = [
 		{
 			name: "Name",

@@ -1,5 +1,15 @@
 import Swal from 'sweetalert2';
+import { useContext, useEffect } from 'react';
+import { useRouteMatch } from 'react-router-dom';
+import { ContentContainerContext } from '../components/ContentContainer';
+
 export default function AlertsExample(props: any) {
+	const pageContext = useContext(ContentContainerContext);
+	const { url } = useRouteMatch();
+	useEffect(() => {
+		pageContext.setLocationList([{ title: "Alerts", url: url }]);
+	});
+
 	const simpleAlert = () => {
 		Swal.fire("This alert message");
 	}
@@ -17,7 +27,7 @@ export default function AlertsExample(props: any) {
 			confirmButtonText: "Yes continue..."
 		}).then((result) => {
 			if (result.isConfirmed) {
-				Swal.fire({icon: 'success', text: "You have confirmed", timer: 1000, showConfirmButton: false });
+				Swal.fire({ icon: 'success', text: "You have confirmed", timer: 1000, showConfirmButton: false });
 			}
 		});
 	}

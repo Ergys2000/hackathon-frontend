@@ -1,7 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useRouteMatch } from 'react-router-dom';
+import { ContentContainerContext } from '../components/ContentContainer';
 import Popup from '../components/Popup';
 
 const PopupExample = (props: any) => {
+	const pageContext = useContext(ContentContainerContext);
+	const { url } = useRouteMatch();
+	useEffect(() => {
+		pageContext.setLocationList([{ title: "Popups", url: url }]);
+	});
+
 	const [showPopup, setShowPopup] = useState(false);
 	return (
 		<div>

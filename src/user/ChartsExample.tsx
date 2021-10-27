@@ -1,6 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { useRouteMatch } from 'react-router-dom';
+import { ContentContainerContext } from '../components/ContentContainer';
 import Chart from 'chart.js/auto';
+ 
 const ChartsExample = (props: any) => {
+	const pageContext = useContext(ContentContainerContext);
+	const { url } = useRouteMatch();
+	useEffect(() => {
+		pageContext.setLocationList([{ title: "Charts", url: url }]);
+	});
 	useEffect(() => {
 		const ctx = document.getElementById('myChart') as any;
 		const myChart = new Chart(ctx, {
