@@ -49,7 +49,7 @@ export default function UserView(props: any) {
 					<Route path={`${path}/tooltip`}>
 						<div className="flex items-center space-x-4">
 							<h1>Tooltip</h1>
-							<ToolTip iconColor="gray-400" popupColor="white" textColor="black" popupText="Lorem Ipsum Dolor Sit Amet"></ToolTip>
+							<ToolTip iconColor="gray-400" popupColor="gray-100" textColor="black" popupText="Lorem Ipsum Dolor Sit Amet"></ToolTip>
 						</div>
 					</Route>
 					<Route path={`${path}/table`}>
