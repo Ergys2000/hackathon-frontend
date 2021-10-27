@@ -6,6 +6,9 @@ import Select from '../components/Select';
 import Textarea from '../components/Textarea';
 import TableViewExample from './TableViewExample';
 import SearchField from '../components/SearchField';
+import AlertsExample from './AlertsExample';
+import PopupExample from './PopupExample';
+import ChartsExample from './ChartsExample';
 
 export default function UserView(props: any) {
 	const { path, url } = useRouteMatch();
@@ -17,6 +20,9 @@ export default function UserView(props: any) {
 				<NavBarItem url={`${url}/tooltip`} iconName="brush" tooltip="Tooltip" />
 				<NavBarItem url={`${url}/table`} iconName="table_rows" tooltip="Table" />
 				<NavBarItem url={`${url}/search`} iconName="search" tooltip="Search Field" />
+				<NavBarItem url={`${url}/alerts`} iconName="notifications" tooltip="Alerts" />
+				<NavBarItem url={`${url}/popup`} iconName="edit" tooltip="Popup window" />
+				<NavBarItem url={`${url}/charts`} iconName="show_chart" tooltip="Charts" />
 			</NavBar>
 			<div className="overflow-auto h-full w-full">
 				<Switch>
@@ -27,7 +33,7 @@ export default function UserView(props: any) {
 					<Route path={`${path}/forms`}>
 						<h1>Form inputs</h1>
 						<form className="w-1/2 border p-5">
-							<Input label="Label" />
+							<Input onChange={(event: React.ChangeEvent) => console.log(event)} label="Label" />
 							<Select label="Label" />
 							<Textarea label="Textarea"></Textarea>
 						</form>
@@ -49,6 +55,15 @@ export default function UserView(props: any) {
 							<h1>Search</h1>
 							<SearchField />
 						</div>
+					</Route>
+					<Route path={`${path}/alerts`}>
+						<AlertsExample />
+					</Route>
+					<Route path={`${path}/popup`}>
+						<PopupExample />
+					</Route>
+					<Route path={`${path}/charts`}>
+						<ChartsExample />
 					</Route>
 					<Redirect path={`${path}/`} to={`${path}/buttons`} />
 				</Switch>

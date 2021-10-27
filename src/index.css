@@ -64,6 +64,11 @@
 	.sidebar-icon:hover .sidebar-tooltip {
 		transform: scale(1);
 	}
+
+	/*The pop up window styling*/
+	.popup {
+		@apply overflow-auto inset-0 z-10 fixed w-screen h-screen bg-black bg-opacity-80;
+	}
 }
 
 
