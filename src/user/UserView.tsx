@@ -1,3 +1,4 @@
+import {useEffect} from 'react';
 import { Switch, Route, Link, useRouteMatch, Redirect } from 'react-router-dom';
 import { NavBar, NavBarItem } from '../components/NavBar';
 import ToolTip from '../components/Tooltip';
@@ -12,6 +13,13 @@ import ChartsExample from './ChartsExample';
 
 export default function UserView(props: any) {
 	const { path, url } = useRouteMatch();
+
+	useEffect(() => {
+		const pathname = window.location.pathname;
+		const crumbs = pathname.split("/");
+		console.log(crumbs);
+	});
+
 	return (
 		<div className="flex h-screen w-screen">
 			<NavBar>
