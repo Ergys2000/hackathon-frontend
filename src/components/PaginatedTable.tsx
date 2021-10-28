@@ -31,7 +31,7 @@ function PaginatedTable<T>(props: PaginatedTableProps<T>) {
         const {name, value} = event.target as any;
         if(name === "pageSize") {
             let pageSize = parseInt(value);
-            setSettings({...settings, [name]: pageSize});
+            setSettings({...settings, [name]: pageSize, pageNumber: 1});
             return;
         }
         if(name === "search") {
@@ -39,8 +39,11 @@ function PaginatedTable<T>(props: PaginatedTableProps<T>) {
         }
     }
     const onArrowClickForward = () => {
-        let pageNumber = settings.pageNumber;
-        // TODO: Put constraint to not go over the limit here
+        const maxPages = Math.ceil(settings.result_length / settings.pageSize);
+        if(settings.pageNumber + 1 > maxPages) {
+            Swal.fire({icon: "warning", text: "Sorry, no more pages."});
+            return;
+        }
         setSettings({...settings, "pageNumber": settings.pageNumber + 1});
     }
     const onArrowClickBack = () => {
@@ -57,6 +60,8 @@ function PaginatedTable<T>(props: PaginatedTableProps<T>) {
             setSettings({...settings, searchString: value});
         }
     }
+    const firstRow = (settings.pageNumber-1)*settings.pageSize;
+    const lastRow = ((firstRow + settings.pageSize) < settings.result_length) ? firstRow + settings.pageSize : settings.result_length;
     return (
         <div className="flex flex-col bg-gray-200 rounded-xl">
             <div className="flex flex-row items-center h-24 p-5">
@@ -71,7 +76,7 @@ function PaginatedTable<T>(props: PaginatedTableProps<T>) {
                         <option value="25">25</option>
                         <option value="50">50</option>
                     </Select>
-                    <p className="text-gray-400 mx-10">{`1-10 of 100`}</p>
+                    <p className="text-gray-400 mx-10">{`${firstRow+1}-${lastRow} of ${settings.result_length}`}</p>
                     <div className="mx-5">
                         <i onClick={onArrowClickBack} className="material-icons text-gray-500 mx-5 hover:text-indigo-700 cursor-pointer">arrow_back_ios</i>
                         <i onClick={onArrowClickForward} className="material-icons text-gray-500 hover:text-indigo-700 cursor-pointer">arrow_forward_ios</i>

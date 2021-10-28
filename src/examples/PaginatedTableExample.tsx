@@ -13,7 +13,7 @@ const fetchData = (searchString: string, pageNumber: number, pageSize: number) =
     for(let i=0; i<pageSize; i++){
         list.push({name: `Page: ${pageNumber} , name ${searchString}, row ${i}`, surname: "Surname " + i});
     }
-    return {data: list, result_length: 100};
+    return {data: list, result_length: 171};
 }
 const columns: Column[] = [
     {
