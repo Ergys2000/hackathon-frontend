@@ -38,6 +38,6 @@ export default function PaginatedTableExample(props: any){
     }, []);
 
     return (
-        <PaginatedTable columns={columns} fetchData={fetchData} />
+        <PaginatedTable<Row> columns={columns} fetchData={fetchData} />
     );
 }
