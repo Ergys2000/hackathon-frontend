@@ -8,7 +8,7 @@ const PopupExample = (props: any) => {
 	const { url } = useRouteMatch();
 	useEffect(() => {
 		pageContext.setLocationList([{ title: "Popups", url: url }]);
-	});
+	}, []);
 
 	const [showPopup, setShowPopup] = useState(false);
 	return (

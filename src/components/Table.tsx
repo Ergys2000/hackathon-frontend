@@ -4,16 +4,16 @@ export type Column = {
 	width: number;
 	Cell: (props: { value: any }) => JSX.Element;
 };
-type TableProps = {
+type TableProps<T> = {
 	columns: Column[];
-	data: any[];
+	data: T[];
 };
 
-export default function Table(props: TableProps) {
+export default function Table<T>(props: TableProps<T>) {
 	const { columns, data } = props;
 
 	return (
-		<div className="p-5 flex flex-col bg-gray-200 w-full h-full shadow-lg justify-center items-stretch rounded-xl">
+		<div className="px-5 flex flex-col bg-gray-200 w-full h-full shadow-lg justify-center items-stretch rounded-xl">
 			<TableHeaderRow columns={columns} />
 			{data.map(row => {
 				return <TableRow row={row} columns={columns} />;

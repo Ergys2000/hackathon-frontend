@@ -8,7 +8,7 @@ export default function AlertsExample(props: any) {
 	const { url } = useRouteMatch();
 	useEffect(() => {
 		pageContext.setLocationList([{ title: "Alerts", url: url }]);
-	});
+	}, []);
 
 	const simpleAlert = () => {
 		Swal.fire("This alert message");

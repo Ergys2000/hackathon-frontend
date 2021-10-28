@@ -8,7 +8,7 @@ const ChartsExample = (props: any) => {
 	const { url } = useRouteMatch();
 	useEffect(() => {
 		pageContext.setLocationList([{ title: "Charts", url: url }]);
-	});
+	}, []);
 	useEffect(() => {
 		const ctx = document.getElementById('myChart') as any;
 		const myChart = new Chart(ctx, {

@@ -1,13 +1,19 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-export default function ToolTip(props: any) {
+type ToolTipProps = {
+    iconColor: string;
+    popupColor: string;
+    textColor: string;
+    popupText: string;
+};
+export default function ToolTip(props: ToolTipProps) {
     const [isOpen, setIsOpen] = useState(false); 
     const popupRef: any = React.createRef();
 
     useEffect(() => {
         popupRef.current.focus();
-    })
+    });
 
     function handleClick() {
         setIsOpen(!isOpen);

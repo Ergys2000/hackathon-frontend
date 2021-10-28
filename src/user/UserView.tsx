@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Switch, Route, Link, useRouteMatch, Redirect } from 'react-router-dom';
 import { NavBar, NavBarItem } from '../components/NavBar';
 import ToolTip from '../components/Tooltip';
@@ -9,6 +8,7 @@ import AlertsExample from './AlertsExample';
 import PopupExample from './PopupExample';
 import ChartsExample from './ChartsExample';
 import ContentContainer from '../components/ContentContainer';
+import PaginatedTableExample from '../examples/PaginatedTableExample';
 
 export default function UserView(props: any) {
 	const { path, url } = useRouteMatch();
@@ -24,6 +24,7 @@ export default function UserView(props: any) {
 				<NavBarItem url={`${url}/alerts`} iconName="notifications" tooltip="Alerts" />
 				<NavBarItem url={`${url}/popup`} iconName="edit" tooltip="Popup window" />
 				<NavBarItem url={`${url}/charts`} iconName="show_chart" tooltip="Charts" />
+				<NavBarItem url={`${url}/paginated-table`} iconName="auto_stories" tooltip="Paginated table" />
 			</NavBar>
 			<ContentContainer>
 				<div className="overflow-auto h-full w-full">
@@ -54,6 +55,9 @@ export default function UserView(props: any) {
 						</Route>
 						<Route path={`${path}/charts`}>
 							<ChartsExample />
+						</Route>
+						<Route path={`${path}/paginated-table`}>
+							<PaginatedTableExample />
 						</Route>
 						<Redirect path={`${path}/`} to={`${path}/buttons`} />
 					</Switch>

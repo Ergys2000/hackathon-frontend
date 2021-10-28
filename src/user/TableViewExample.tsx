@@ -48,7 +48,7 @@ export default function TableViewExample(props: any) {
 	const { url } = useRouteMatch();
 	useEffect(() => {
 		pageContext.setLocationList([{ title: "Tables", url: url }]);
-	});
+	}, []);
 	const cols = [
 		{
 			name: "Name",

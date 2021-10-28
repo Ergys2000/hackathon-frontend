@@ -10,7 +10,7 @@ const FormsExample = (props: any) => {
 	const { url } = useRouteMatch();
 	useEffect(() => {
 		pageContext.setLocationList([{ title: "Forms", url: url }]);
-	});
+	}, []);
 	return (
 		<form className="w-1/2 border p-5">
 			<Input onChange={(event: React.ChangeEvent) => console.log(event)} label="Label" />
