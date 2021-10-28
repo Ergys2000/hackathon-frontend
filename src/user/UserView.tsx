@@ -9,12 +9,14 @@ import PopupExample from './PopupExample';
 import ChartsExample from './ChartsExample';
 import ContentContainer from '../components/ContentContainer';
 import PaginatedTableExample from '../examples/PaginatedTableExample';
+import SwiperComponent from '../components/SwiperComponent';
+import {SwiperSlide} from 'swiper/react';
 
 export default function UserView(props: any) {
 	const { path, url } = useRouteMatch();
 
 	return (
-		<div className="flex h-screen w-screen">
+		<div className="flex w-screen h-screen">
 			<NavBar>
 				<NavBarItem url={`${url}/buttons`} iconName="home" tooltip="Buttons" />
 				<NavBarItem url={`${url}/forms`} iconName="list" tooltip="Forms" />
@@ -25,12 +27,13 @@ export default function UserView(props: any) {
 				<NavBarItem url={`${url}/popup`} iconName="edit" tooltip="Popup window" />
 				<NavBarItem url={`${url}/charts`} iconName="show_chart" tooltip="Charts" />
 				<NavBarItem url={`${url}/paginated-table`} iconName="auto_stories" tooltip="Paginated table" />
+				<NavBarItem url={`${url}/swiper`} iconName="swipe" tooltip="Swiper Component" />
 			</NavBar>
 			<ContentContainer>
-				<div className="overflow-auto h-full w-full">
+				<div className="w-full h-full overflow-auto">
 					<Switch>
 						<Route path={`${path}/buttons`}>
-							<button className="action-button p-3 m-3">Button</button>
+							<button className="p-3 m-3 action-button">Button</button>
 						</Route>
 						<Route path={`${path}/forms`}>
 							<FormsExample />
@@ -58,6 +61,25 @@ export default function UserView(props: any) {
 						</Route>
 						<Route path={`${path}/paginated-table`}>
 							<PaginatedTableExample />
+						</Route>
+						<Route path={`${path}/swiper`}>
+							<SwiperComponent className="w-1/2 p-2 mt-8"> 
+								<SwiperSlide>
+									<div className="p-8 bg-white rounded-lg">
+										<p> Test </p>
+									</div>
+								</SwiperSlide>
+								<SwiperSlide>
+									<div className="p-8 bg-white rounded-lg">
+										<p> Test </p>
+									</div>
+								</SwiperSlide>
+								<SwiperSlide>
+									<div className="p-8 bg-white rounded-lg">
+										<p> Test </p>
+									</div>
+								</SwiperSlide>
+							</SwiperComponent>
 						</Route>
 						<Redirect path={`${path}/`} to={`${path}/buttons`} />
 					</Switch>

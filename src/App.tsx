@@ -5,7 +5,7 @@ import Login from './Login';
 
 function App() {
 	return (
-		<div className="App w-screen h-screen bg-gray-300 flex justify-center items-center">
+		<div className="flex items-center justify-center w-screen h-screen bg-gray-300 App">
 			<Router>
 				<Switch>
 					<Route path="/login">
