@@ -1,7 +1,10 @@
-import React from 'react';
 import { BrowserRouter as Router, Redirect, Link, Route, Switch } from 'react-router-dom';
-import UserView from './user/UserView';
+import UserView from './demos/UserView';
+import AdminView from './admin/AdminView';
+import ReceiverView from './receiver/ReceiverView';
 import Login from './Login';
+import DonatorView from './donator/DonatorView';
+import RegisterView from './register/RegisterView';
 
 function App() {
 	return (
@@ -11,7 +14,19 @@ function App() {
 					<Route path="/login">
 						<Login />
 					</Route>
-					<Route path="/user">
+					<Route path="/admin">
+						<AdminView />
+					</Route>
+					<Route path="/receiver">
+						<ReceiverView />
+					</Route>
+					<Route path="/donator">
+						<DonatorView />				
+					</Route>
+					<Route path="/register">
+						<RegisterView />
+					</Route>
+					<Route path="/demos">
 						<UserView />
 					</Route>
 					<Redirect path="/" to="/login" />
